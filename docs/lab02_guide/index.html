@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #daddf7
+        }
+
+        header {
+            color: white;
+            background-color: #0d167b;
+            padding: 20px;
+
+        }
+
+        #logoCanvas {
+            display: block;
+        }
+
+        nav {
+            background-color: #6369a5;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav li {
+            display: inline;
+            margin: 0 15px;
+            list-style-type: none;
+        }
+
+        nav li:hover {
+            text-decoration: underline;
+            cursor: pointer;
+            color: white;
+        }
+
+        .active {
+            text-decoration: underline;
+            cursor: pointer;
+            color: white;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding-right: 20px;
+        }
+
+        .container {
+            margin-top: 10px;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            background: #0d167b;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .images {
+            display: grid;
+            grid-template-columns: repeat(1, 2fr);
+            gap: 0;
+            padding: 10px;
+            justify-items: center;
+        }
+
+        .image {
+            width: 90%;
+            height: 250px;
+            object-fit: cover;
+            margin: 5px;
+            border-radius: 10px;
+        }
+
+        .content {
+            padding: 1.5rem;
+        }
+
+        .content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #0d167b;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            #logoCanvas {
+                width: 100%;
+                height: auto;
+            }
+
+            nav {
+                padding: 15px 5px;
+                text-align: left;
+            }
+
+            nav li {
+                display: block;
+                margin: 5px 0;
+                margin-left: 10px;
+            }
+
+            nav a {
+                padding: 10px 0;
+                display: block;
+
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 10px;
+            }
+
+            .card {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .header h3 {
+                font-size: 1.2rem;
+            }
+
+            .images {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .image {
+                width: 95%;
+                height: 200px;
+                margin: 5px auto;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .content p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            footer {
+                padding: 1rem;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <canvas id="logoCanvas" width="500" height="80"></canvas>
+    </header>
+    <nav>
+        <li><a href="index.html" class="active">หน้าแรก</a></li>
+        <li><a href="suggest.html">แนะนำสถานที่ใหม่</a></li>
+    </nav>
+    <script>
+        const canvas = document.getElementById('logoCanvas');
+        const ctx = canvas.getContext('2d');
+        let time = 0;
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const iconX = 50;
+            const iconY = 40;
+
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+
+            const wave1 = Math.sin(time * 0.03) * 2;
+            const wave2 = Math.sin(time * 0.03 + 1) * 2;
+            const wave3 = Math.sin(time * 0.03 + 2) * 2;
+
+            ctx.beginPath();
+            ctx.moveTo(iconX, iconY + 10 + wave1);
+            ctx.lineTo(iconX, iconY - 10 + wave1);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(iconX + 12, iconY + 10 + wave2);
+            ctx.lineTo(iconX + 12, iconY - 20 + wave2);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(iconX + 24, iconY + 10 + wave3);
+            ctx.lineTo(iconX + 24, iconY - 15 + wave3);
+            ctx.stroke();
+
+            ctx.font = 'bold 32px Arial, sans-serif';
+            ctx.fillStyle = '#ffffff';
+            ctx.textAlign = 'left';
+            ctx.fillText('KKU CAMPUS GUIDE', 100, 50);
+
+            const underlineY = 58;
+            const underlineWidth = 280;
+            const pulse = Math.sin(time * 0.05) * 5;
+
+            ctx.strokeStyle = 'rgba(99, 105, 165, 0.8)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(100, underlineY);
+            ctx.lineTo(100 + underlineWidth - pulse, underlineY);
+            ctx.stroke();
+
+            const pinX = 410;
+            const pinY = 35 + Math.sin(time * 0.08) * 2;
+
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(pinX, pinY);
+            ctx.lineTo(pinX, pinY + 8);
+            ctx.stroke();
+
+            time++;
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+    <div class="container">
+        <article class="card">
+            <div class="header">
+                <h3>หอสมุดกลาง</h3>
+            </div>
+            <div class="images">
+                <img src="..\lab02_guide\img\hs2.jpeg" alt="หอสมุดกลาง" class="image">
+                <img src="..\lab02_guide\img\hs1.jpg" alt="หอสมุดกลาง" class="image">
+            </div>
+            <div class="content">
+                <p>หอสมุดกลางเป็นศูนย์กลางการเรียนรู้ที่ทันสมัยที่สุดของมหาวิทยาลัย
+                    มีหนังสือและทรัพยากรการเรียนรู้มากกว่า 500,000 เล่ม พร้อมพื้นที่อ่านหนังสือที่เงียบสงบ
+                    ห้องสมุดดิจิทัล และห้องประชุมกลุ่มย่อย</p>
+                <p>เปิดให้บริการทุกวัน ตั้งแต่เช้าจรดค่ำ เหมาะสำหรับนักศึกษาที่ต้องการพื้นที่เรียนและค้นคว้าข้อมูล
+                    มีระบบ Wi-Fi ความเร็วสูง และมุมสำหรับทำงานกลุ่ม</p>
+            </div>
+        </article>
+        <article class="card">
+            <div class="header">
+                <h3>บึงสีฐาน</h3>
+            </div>
+            <div class="images">
+                <img src="..\lab02_guide\img\bs1.jpg" alt="บึงสีฐาน" class="image">
+                <img src="..\lab02_guide\img\bs2.jpg" alt="บึงสีฐาน" class="image">
+            </div>
+            <div class="content">
+                <p>บึงสีฐานเป็นปอดของมหาวิทยาลัย เป็นสถานที่พักผ่อนหย่อนใจท่ามกลางธรรมชาติที่สวยงาม
+                    มีทางเดินออกกำลังกายรอบบึงยาวกว่า 1.5 กิโลเมตร เหมาะสำหรับการวิ่งเล่นหรือปั่นจักรยานในตอนเช้าและเย็น
+                </p>
+                <p>บริเวณโดยรอบมีต้นไม้ใหญ่ร่มรื่น มีม้านั่งพักจำนวนมาก
+                    นักศึกษามักมานั่งอ่านหนังสือหรือพูดคุยผ่อนคลายริมบึง บรรยากาศเงียบสงบและสดชื่น</p>
+            </div>
+        </article>
+        <article class="card">
+            <div class="header">
+                <h3>อุทยานเกษตร</h3>
+            </div>
+            <div class="images">
+                <img src="..\lab02_guide\img\pk1.jpg" alt="สวนเกษตร" class="image">
+                <img src="..\lab02_guide\img\pk2.jpg" alt="สวนเกษตร" class="image">
+            </div>
+            <div class="content">
+                <p>อุทยานเกษตรเป็นจุดที่ไม่ควรพลาดสำหรับผู้ที่ต้องการหาสถานที่สำหรับออกกำลังกายและพักผ่อนหย่อนใจ
+                    ตั้งอยู่ท่ามกลางธรรมชาติอันสดชื่น มีทั้งทุ่งหญ้าและอ่างเก็บน้ำให้คุณได้เพลิดเพลิน
+                    ในช่วงเวลาเปิดทำการตั้งแต่ 05:00-21:00 น.
+                </p>
+                <p>นอกจากนี้ยังมีร้านค้าขายของกินมากมายหรือหากใครอยากนั่งชิลริมทางเดินก็สามารถทำได้
+                    โดยเฉพาะผู้ที่ชอบการพาสัตว์เลี้ยงมาเดินเล่นก็ถือเป็นตัวเลือกที่ดี
+                    ด้วยสภาพที่เหมาะสมแก้การสร้างตวามสุขใจในช่วงเวลายามสบาย ทำให้ผู้คนหลายคนกลับมาใช้บริการอยู่เสมอ</p>
+            </div>
+        </article>
+        <article class="card">
+            <div class="header">
+                <h3>ศูนย์ประชุมอเนกประสงค์กาญจนาภิเษก</h3>
+            </div>
+            <div class="images">
+                <img src="..\lab02_guide\img\hk1.jpg" alt="หอกาญ" class="image">
+                <img src="..\lab02_guide\img\hk2.jpg" alt="หอกาญ" class="image">
+            </div>
+            <div class="content">
+                <p>ศูนย์ประชุมที่สามารถรองรับการจัดงานประชุมได้ถึง 8,000 ที่นั่ง พร้อมอัฒจันทร์ในบริเวณชั้นลอยอีก 1,000
+                    ที่นั่ง
+                    พื้นที่ 3,000 ตารางเมตร ยังปรับเปลี่ยนเป็นลานกว้าง สำหรับการจัดแสดงคอนเสิร์ตที่จุคนได้กว่า 10,000 คน
+                    พร้อมสรรพทั้งระบบแสง สี เสียงและโสตทัศนูปกรณ์ทันสมัยสำหรับงานระดับชาติ ระบบทำความเย็นและระบบไฟสำรอง
+                    พร้อมระบบรักษาความปลอดภัยที่ทันสมัย ลานจอดรถกว้างขวาง จุได้กว่า 3,000 คัน และรถโดยสารกว่า 50 คัน
+                    และในทุกๆปียังใช้เป็นสถานที่จัดงานพีธีพระราชทานปริญญาบัตรของมหาวิทยาลัยขอนแก่นอีกด้วย</p>
+            </div>
+        </article>
+    </div>
+    <footer>
+        <p>
+            &copy; 2025 ศุจีภรณ์ ภูบาลชื่น 663380613-0.
+        </p>
+    </footer>
+</body>
+
+</html>

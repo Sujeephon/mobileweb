@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #daddf7
+        }
+
+        header {
+            color: white;
+            background-color: #0d167b;
+            padding: 20px;
+
+        }
+
+        #logoCanvas {
+            display: block;
+        }
+
+        nav {
+            background-color: #6369a5;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav li {
+            display: inline;
+            margin: 0 15px;
+            list-style-type: none;
+        }
+
+        nav li:hover {
+            text-decoration: underline;
+            cursor: pointer;
+            color: white;
+        }
+
+        .active {
+            text-decoration: underline;
+            cursor: pointer;
+            color: white;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding-right: 20px;
+        }
+
+         .wrapper {
+            min-height: calc(100vh - 150px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .headerForm {
+            background: linear-gradient(135deg, #0d167b 0%, #1a237e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .headerForm h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .headerForm p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .body {
+            padding: 40px;
+        }
+        
+        .group {
+            margin-bottom: 25px;
+        }
+        
+        .group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .group label .required {
+            color: #e74c3c;
+            margin-left: 4px;
+        }
+        
+        .group input[type="text"],
+        .group input[type="url"],
+        .group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+        }
+        
+        .group input[type="text"]:focus,
+        .group input[type="url"]:focus,
+        .group textarea:focus {
+            outline: none;
+            border-color: #6369a5;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(99, 105, 165, 0.1);
+        }
+        
+        .group textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.6;
+        }
+        
+        .group .input-hint {
+            font-size: 13px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #0d167b 0%, #1a237e 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(13, 22, 123, 0.3);
+        }
+        
+        .submit-button:active {
+            transform: translateY(0);
+        }
+        
+        .footerForm {
+            background-color: #f8f9fa;
+            padding: 20px 40px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .note {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .note strong {
+            color: #0d167b;
+        }
+
+        footer {
+            background: #0d167b;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: white;
+        }
+
+          @media (max-width: 768px) {
+            #logoCanvas {
+                width: 100%;
+                height: auto;
+            }
+
+            nav {
+                padding: 15px 5px;
+                text-align: left;
+            }
+
+            nav li {
+                display: block;
+                margin: 5px 0;
+                margin-left: 10px;
+            }
+
+            nav a {
+                padding: 10px 0;
+                display: block;
+
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 10px;
+            }
+
+            .card {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .header h3 {
+                font-size: 1.2rem;
+            }
+
+            .images {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .image {
+                width: 95%;
+                height: 200px;
+                margin: 5px auto;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .content p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            footer {
+                padding: 1rem;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <canvas id="logoCanvas" width="500" height="80"></canvas>
+    </header>
+    <nav>
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="suggest.html" class="active">แนะนำสถานที่ใหม่</a></li>
+    </nav>
+    <script>
+        const canvas = document.getElementById('logoCanvas');
+        const ctx = canvas.getContext('2d');
+        let time = 0;
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const iconX = 50;
+            const iconY = 40;
+
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+
+            const wave1 = Math.sin(time * 0.03) * 2;
+            const wave2 = Math.sin(time * 0.03 + 1) * 2;
+            const wave3 = Math.sin(time * 0.03 + 2) * 2;
+
+            ctx.beginPath();
+            ctx.moveTo(iconX, iconY + 10 + wave1);
+            ctx.lineTo(iconX, iconY - 10 + wave1);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(iconX + 12, iconY + 10 + wave2);
+            ctx.lineTo(iconX + 12, iconY - 20 + wave2);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(iconX + 24, iconY + 10 + wave3);
+            ctx.lineTo(iconX + 24, iconY - 15 + wave3);
+            ctx.stroke();
+
+            ctx.font = 'bold 32px Arial, sans-serif';
+            ctx.fillStyle = '#ffffff';
+            ctx.textAlign = 'left';
+            ctx.fillText('KKU CAMPUS GUIDE', 100, 50);
+
+            const underlineY = 58;
+            const underlineWidth = 280;
+            const pulse = Math.sin(time * 0.05) * 5;
+
+            ctx.strokeStyle = 'rgba(99, 105, 165, 0.8)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(100, underlineY);
+            ctx.lineTo(100 + underlineWidth - pulse, underlineY);
+            ctx.stroke();
+
+            const pinX = 410;
+            const pinY = 35 + Math.sin(time * 0.08) * 2;
+
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(pinX, pinY);
+            ctx.lineTo(pinX, pinY + 8);
+            ctx.stroke();
+
+            time++;
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+
+    <div id="suggest" class="page-content">
+        <div class="wrapper">
+            <div class="container">
+                <div class="headerForm">
+                    <h2>แนะนำสถานที่ใหม่</h2>
+                    <p>กรุณากรอกข้อมูลสถานที่ที่คุณต้องการแนะนำ</p>
+                </div>
+
+                <div class="body">
+                    <form id="locationForm">
+                        <div class="group">
+                            <label for="locationName">
+                                ชื่อสถานที่
+                                <span class="required">*</span>
+                            </label>
+                            <input type="text" id="locationName" name="locationName"
+                                placeholder=" " required>
+                        </div>
+
+                        <div class="group">
+                            <label for="description">
+                                รายละเอียด
+                                <span class="required">*</span>
+                            </label>
+                            <textarea id="description" name="description"
+                                placeholder="อธิบายเกี่ยวกับสถานที่..."
+                                required></textarea>
+                        </div>
+
+                        <div class="group">
+                            <label for="imageUrl">
+                                URL ของภาพ
+                                <span class="required">*</span>
+                            </label>
+                            <input type="url" id="imageUrl" name="imageUrl" placeholder=" "
+                                required>
+                            <div class="input-hint">ใส่ลิงก์ภาพที่แสดงสถานที่ (ควรเป็น .jpg หรือ .png)</div>
+                        </div>
+
+                        <button type="submit" class="submit-button">
+                            ส่งข้อมูล
+                        </button>
+                    </form>
+                </div>
+
+                <div class="footerForm">
+                    <p class="note">
+                        <strong>หมายเหตุ:</strong> ข้อมูลที่คุณส่งจะถูกตรวจสอบก่อนนำขึ้นแสดงบนเว็บไซต์
+                        ขอบคุณที่ช่วยทำให้ KKU Campus Guide สมบูรณ์ยิ่งขึ้น
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>
+            &copy; 2025 ศุจีภรณ์ ภูบาลชื่น 663380613-0.
+        </p>
+    </footer>
+</body>
+
+</html>
