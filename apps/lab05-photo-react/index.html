@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <title>Lab 5 – Ionic Photo Gallery</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background: #f7f7f7;
+      color: #333;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .screenshots img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .download {
+      margin-top: 30px;
+      padding: 20px;
+      background: #eef6ff;
+      border-left: 6px solid #3498db;
+    }
+
+    .download a {
+      color: #3498db;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .download a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Lab 5: Ionic React Photo Gallery</h1>
+
+    <h2>ตัวอย่างหน้าจอ (Screenshots)</h2>
+    <div class="screenshots">
+      <img src="../public/demo.png" alt="หน้าแรกของแอป">
+    </div>
+
+    <div class="download">
+      <h2>ดาวน์โหลดไฟล์แอป (.apk)</h2>
+      <p>
+        👉 <a href="/apps/lab05-photo-react/public/app-debug.apk" download>
+          คลิกที่นี่เพื่อดาวน์โหลดไฟล์ APK
+        </a>
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>
