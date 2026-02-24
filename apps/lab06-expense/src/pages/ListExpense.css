@@ -1,0 +1,48 @@
+.edit-modal {
+  --background: rgba(0, 0, 0, 0.4);
+}
+
+.modal-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-container {
+  width: 700px;
+  max-width: 90%;
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.edit-actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.edit-container {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.close-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  height: 32px;
+  width: 32px;
+}
